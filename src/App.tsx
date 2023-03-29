@@ -1,6 +1,5 @@
 import {useState, useEffect} from 'react';
 import { ResponsiveCirclePacking } from '@nivo/circle-packing';
-import { generateLibTree } from '@nivo/generators'
 import './App.css';
 
 function App() {
@@ -21,7 +20,8 @@ function App() {
         width: 900,
        height: 500,
         data: data,
-        
+
+      // example json that works from nivo
       //   {
       //     name: "science fiction",
       //     children: [
