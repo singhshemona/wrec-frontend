@@ -7,39 +7,22 @@ function App() {
   const [zoomedId, setZoomedId] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch("https://store-api-w6cy.onrender.com/bookshelf")
+    fetch("https://wrec-api.onrender.com/bookshelf/user/1")
       .then((response) => response.json())
       .then((json) => {
         setData(json);
         console.log(json)
-        // console.log(generateLibTree())
       });
   }, []);
 
   const commonProperties = {
-        width: 900,
-       height: 500,
-        data: data,
-
-      // example json that works from nivo
-      //   {
-      //     name: "science fiction",
-      //     children: [
-      //       {
-      //           name: "dark matter",
-      //           value: 1
-      //       },
-      //       {
-      //           name: "hitchhikers guide to galaxy",
-      //           value: 1 // this needs to be provided
-      //       }, 
-      //     ]
-      // },
-      
-      padding: 2,
-      id: 'name',
-      value: 'value',
-      labelsSkipRadius: 16,
+    width: 900,
+    height: 500,
+    data: data,
+    padding: 2,
+    id: 'name',
+    value: 'value',
+    labelsSkipRadius: 16,
   }
 
   return (
