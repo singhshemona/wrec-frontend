@@ -35,10 +35,9 @@ function App() {
             labelsFilter={label => label.node.height === 0}
             labelTextColor={{
               from: 'color',
-                modifiers: [['darker', 2]],
-          }}
+              modifiers: [['darker', 2]],
+            }}
             zoomedId={zoomedId}
-            motionConfig="slow"
             onClick={node => {
                 setZoomedId(zoomedId === node.id ? null : node.id)
             }}
