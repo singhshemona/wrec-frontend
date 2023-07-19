@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import { ResponsiveCirclePacking } from '@nivo/circle-packing';
+import { LabelComponent, CirclePackingHtml } from '@nivo/circle-packing';
 import './App.css';
 
 function App() {
@@ -7,35 +7,41 @@ function App() {
   const [zoomedId, setZoomedId] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch("https://wrec-api.onrender.com/bookshelf/user/1")
+    fetch("https://wrec-api.onrender.com/bookshelf/circlepacking/user/1")
       .then((response) => response.json())
       .then((json) => {
+        console.log(json);
         setData(json);
-        console.log(json)
       });
   }, []);
 
-  const commonProperties = {
-    width: 900,
-    height: 500,
+  const properties = {
+    width: 750,
+    height: 750,
     data: data,
     padding: 2,
     id: 'name',
     value: 'value',
     labelsSkipRadius: 16,
+    enableLabels: true,
+    theme: {
+      "labels": {
+          "text": {
+            "fontWeight": 'bold',
+          },
+      },
+    }
   }
 
   return (
     data ?
-      <div style={{ height: "400px", width: '600px' }}>
-        <ResponsiveCirclePacking
-            {...commonProperties}
-            enableLabels
-            labelsSkipRadius={16}
+      <div style={{ height: 750, width: 750 }}>
+        <CirclePackingHtml
+            {...properties}
             labelsFilter={label => label.node.height === 0}
             labelTextColor={{
               from: 'color',
-              modifiers: [['darker', 2]],
+              modifiers: [['darker', 2]]
             }}
             zoomedId={zoomedId}
             onClick={node => {
